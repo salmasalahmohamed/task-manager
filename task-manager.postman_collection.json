@@ -1,0 +1,395 @@
+{
+	"info": {
+		"_postman_id": "86441909-a258-499c-a231-b1f624e1b81e",
+		"name": "task-manager",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "24028450"
+	},
+	"item": [
+		{
+			"name": "tasks",
+			"item": [
+				{
+					"name": "create new task",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"description": "## Add Task\n\nThis endpoint allows users to create a new task by submitting relevant details through a POST request.\n\n### Request\n\nThe request must include the following form-data parameters:\n\n- **title** (text): The title of the task.\n    \n- **description** (text): A detailed description of the task.\n    \n- **category_id** (text): An identifier for the category under which the task falls.\n    \n- **priority** (text): The priority level of the task.\n    \n\n### Response\n\nUpon successful creation of the task, the API will return a JSON response with the following structure:\n\n- **success** (boolean): Indicates whether the request was successful.\n    \n- **data** (object): Contains the details of the created task:\n    \n    - **title** (string): The title of the task.\n        \n    - **description** (string): The description of the task.\n        \n    - **category_id** (string): The category identifier.\n        \n    - **priority** (string): The priority level of the task.\n        \n    - **updated_at** (string): Timestamp of when the task was last updated.\n        \n    - **created_at** (string): Timestamp of when the task was created.\n        \n    - **id** (integer): Unique identifier for the task.\n        \n    - **image_url** (string): URL for any associated image (if applicable).\n        \n- **message** (string): Additional information about the request status.\n    \n\n### Notes\n\n- Ensure that all required fields are provided in the request to avoid validation errors.\n    \n- The response will include the details of the task that was created, which can be useful for confirmation or further processing."
+					},
+					"response": [
+						{
+							"name": "New Request",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "",
+										"value": "",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "title",
+											"value": "laravel2",
+											"type": "text"
+										},
+										{
+											"key": "description",
+											"value": "powerfull framework in back-end  field",
+											"type": "text"
+										},
+										{
+											"key": "category_id",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "priority",
+											"value": "high",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/tasks",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"tasks"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.3.10"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 21 Sep 2025 16:39:43 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"data\": {\n        \"title\": \"laravel2\",\n        \"description\": \"powerfull framework in back-end  field\",\n        \"category_id\": \"1\",\n        \"priority\": \"high\",\n        \"updated_at\": \"2025-09-21T16:39:43.000000Z\",\n        \"created_at\": \"2025-09-21T16:39:43.000000Z\",\n        \"id\": 2,\n        \"image_url\": \"https://picsum.photos/seed/task2/400/300\"\n    },\n    \"message\": \"created success\"\n}"
+						}
+					]
+				},
+				{
+					"name": "get one task",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"description": "## API Endpoint: Get Task Details\n\nThis endpoint retrieves the details of a specific task identified by its unique ID. It is useful for obtaining comprehensive information about a task, including its title, description, priority, completion status, associated image, and category.\n\n### Request\n\n- **Method**: GET\n    \n- **URL**: `http://127.0.0.1:8000/api/task/{id}`\n    \n- **Path Parameter**:\n    \n    - `id` (integer): The unique identifier of the task you wish to retrieve. In this example, the ID is `1`.\n        \n\n### Response\n\nThe response from this endpoint will be in JSON format and includes the following structure:\n\n- **success** (boolean): Indicates whether the request was successful.\n    \n- **data** (object): Contains the details of the task.\n    \n    - **id** (integer): The unique identifier of the task.\n        \n    - **title** (string): The title of the task.\n        \n    - **description** (string): A description of the task.\n        \n    - **priority** (string): The priority level of the task.\n        \n    - **completed** (integer): A flag indicating whether the task is completed (1 for true, 0 for false).\n        \n    - **image_url** (string): A URL pointing to an image associated with the task.\n        \n    - **category** (object): Contains information about the category of the task.\n        \n        - **id** (integer): The unique identifier of the category.\n            \n        - **name** (string): The name of the category.\n            \n        - **color** (string): The color associated with the category.\n            \n- **message** (string): A message providing additional information about the request status.\n    \n\n### Example Response\n\n``` json\n{\n  \"success\": true,\n  \"data\": {\n    \"id\": 0,\n    \"title\": \"\",\n    \"description\": \"\",\n    \"priority\": \"\",\n    \"completed\": 0,\n    \"image_url\": \"\",\n    \"category\": {\n      \"id\": 0,\n      \"name\": \"\",\n      \"color\": \"\"\n    }\n  },\n  \"message\": \"\"\n}\n\n ```\n\nThis endpoint is essential for applications that need to display or manage tasks, allowing users to view detailed information about each task based on its ID."
+					},
+					"response": [
+						{
+							"name": "New Request",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/task/1",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"task",
+										"1"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.3.10"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 21 Sep 2025 16:47:05 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"data\": {\n        \"id\": 1,\n        \"title\": \"laravel2\",\n        \"description\": \"powerfull framework in back-end  field\",\n        \"priority\": \"high\",\n        \"completed\": 0,\n        \"image_url\": \"https://picsum.photos/seed/task1/400/300\",\n        \"category\": {\n            \"id\": 2,\n            \"name\": \"vitae\",\n            \"color\": \"#efbd59\"\n        }\n    },\n    \"message\": \"retrieve one task  success\"\n}"
+						}
+					]
+				},
+				{
+					"name": "retrieve all tasks",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"description": "\n## API Endpoint: Retrieve Tasks\n\nThis endpoint allows you to retrieve a list of tasks from the server. It returns a collection of tasks with their respective details.\n\n### Request\n\n- **Method:** GET\n- **URL:** `http://127.0.0.1:8000/api/tasks`\n\n### Response\n\nUpon a successful request, the server responds with a JSON object that includes the following fields:\n\n- **success** (boolean): Indicates whether the request was successful.\n- **data** (array): An array of task objects, each containing:\n  - **id** (integer): The unique identifier for the task.\n  - **title** (string): The title of the task.\n  - **description** (string): A brief description of the task.\n  - **priority** (string): The priority level of the task.\n  - **completed** (integer): A flag indicating whether the task is completed (1 for true, 0 for false).\n  - **image_url** (string): A URL to an image associated with the task.\n  - **category** (object): An object representing the category of the task, containing:\n    - **id** (integer): The unique identifier for the category.\n    - **name** (string): The name of the category.\n    - **color** (string): The color associated with the category.\n- **message** (string): A message providing additional context about the response.\n\n### Example Response\n\n```json\n{\n  \"success\": true,\n  \"data\": [\n    {\n      \"id\": 0,\n      \"title\": \"\",\n      \"description\": \"\",\n      \"priority\": \"\",\n      \"completed\": 0,\n      \"image_url\": \"\",\n      \"category\": {\n        \"id\": 0,\n        \"name\": \"\",\n        \"color\": \"\"\n      }\n    }\n  ],\n  \"message\": \"\"\n}\n```\n\n### Notes\n\n- Ensure that the server is running and accessible at the specified URL.\n- The response will include an array of tasks, which may be empty if no tasks are available.\n"
+					},
+					"response": [
+						{
+							"name": "New Request",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/tasks",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"tasks"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.3.10"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 21 Sep 2025 16:46:39 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"data\": [\n        {\n            \"id\": 1,\n            \"title\": \"laravel2\",\n            \"description\": \"powerfull framework in back-end  field\",\n            \"priority\": \"high\",\n            \"completed\": 0,\n            \"image_url\": \"https://picsum.photos/seed/task1/400/300\",\n            \"category\": {\n                \"id\": 2,\n                \"name\": \"vitae\",\n                \"color\": \"#efbd59\"\n            }\n        },\n        {\n            \"id\": 2,\n            \"title\": \"laravel2\",\n            \"description\": \"powerfull framework in back-end  field\",\n            \"priority\": \"high\",\n            \"completed\": 0,\n            \"image_url\": \"https://picsum.photos/seed/task2/400/300\",\n            \"category\": {\n                \"id\": 1,\n                \"name\": \"eligendi\",\n                \"color\": \"#852b87\"\n            }\n        }\n    ],\n    \"message\": \"retrieved success\"\n}"
+						}
+					]
+				},
+				{
+					"name": "update status of task",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"description": "\n### PATCH /api/task/{id}/toggle\n\nThis endpoint is used to toggle the completion status of a specific task identified by its unique ID. By sending a PATCH request to this endpoint, you can update the task's completion state without needing to send the entire task object.\n\n#### Request Parameters\n- **Path Parameter:**\n  - `id` (integer): The unique identifier of the task you want to toggle. This should be included in the URL.\n\n#### Response Structure\nUpon a successful request, the server responds with a JSON object that contains the following fields:\n\n- **success** (boolean): Indicates whether the operation was successful.\n- **data** (object): Contains the details of the task after the update:\n  - **id** (integer): The unique identifier of the task.\n  - **title** (string): The title of the task.\n  - **description** (string): A brief description of the task.\n  - **priority** (string): The priority level of the task.\n  - **completed** (boolean): The current completion status of the task (true if completed, false otherwise).\n  - **image_url** (string): A URL pointing to an image associated with the task.\n  - **category** (object): An object representing the category of the task:\n    - **id** (integer): The unique identifier of the category.\n    - **name** (string): The name of the category.\n    - **color** (string): The color associated with the category.\n- **message** (string): A message providing additional information about the operation.\n\n#### Example Response\n```json\n{\n  \"success\": true,\n  \"data\": {\n    \"id\": 0,\n    \"title\": \"\",\n    \"description\": \"\",\n    \"priority\": \"\",\n    \"completed\": true,\n    \"image_url\": \"\",\n    \"category\": {\n      \"id\": 0,\n      \"name\": \"\",\n      \"color\": \"\"\n    }\n  },\n  \"message\": \"\"\n}\n```\n\nThis endpoint is particularly useful for managing task lists in applications where users can mark tasks as completed or not, enhancing the user experience by allowing quick updates without full data submissions.\n"
+					},
+					"response": [
+						{
+							"name": "New Request",
+							"originalRequest": {
+								"method": "PATCH",
+								"header": [],
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/task/1/toggle",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"task",
+										"1",
+										"toggle"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.3.10"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 21 Sep 2025 16:49:33 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"data\": {\n        \"id\": 1,\n        \"title\": \"laravel2\",\n        \"description\": \"powerfull framework in back-end  field\",\n        \"priority\": \"high\",\n        \"completed\": true,\n        \"image_url\": \"https://picsum.photos/seed/task1/400/300\",\n        \"category\": {\n            \"id\": 2,\n            \"name\": \"vitae\",\n            \"color\": \"#efbd59\"\n        }\n    },\n    \"message\": \" toggled successfully\"\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "categories",
+			"item": [
+				{
+					"name": "retrieve all categories",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"description": "### Get Categories API\n\nThis endpoint retrieves a list of categories from the server. It is a simple GET request that does not require any parameters in the request body.\n\n#### Request\n\n- **Method:** GET\n    \n- **URL:** `http://127.0.0.1:8000/api/categories`\n    \n- **Request Body:**\n    \n    - No parameters are required in the request body.\n        \n\n#### Response\n\nUpon a successful request, the server responds with a status code of `200` and a JSON object containing the following fields:\n\n- **success** (boolean): Indicates whether the request was successful.\n    \n- **data** (array): An array of category objects, where each object contains:\n    \n    - **id** (integer): The unique identifier for the category.\n        \n    - **name** (string): The name of the category.\n        \n    - **color** (string): The color associated with the category.\n        \n    - **tasks** (array): An array of tasks associated with the category (currently empty).\n        \n- **message** (string): A message providing additional information about the request (currently empty).\n    \n\n#### Notes\n\n- This endpoint is useful for fetching all available categories, which can be utilized in various parts of the application, such as task management or categorization features.\n    \n- Ensure that the server is running and accessible at the specified URL before making the request."
+					},
+					"response": [
+						{
+							"name": "retrieve all categories",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/categories",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"categories"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.3.10"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 21 Sep 2025 16:48:11 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"data\": {\n        \"current_page\": 1,\n        \"data\": [\n            {\n                \"id\": 1,\n                \"name\": \"eligendi\",\n                \"color\": \"#852b87\",\n                \"created_at\": \"2025-09-21T16:34:52.000000Z\",\n                \"updated_at\": \"2025-09-21T16:34:52.000000Z\",\n                \"task\": [\n                    {\n                        \"id\": 2,\n                        \"title\": \"laravel2\",\n                        \"description\": \"powerfull framework in back-end  field\",\n                        \"category_id\": 1,\n                        \"priority\": \"high\",\n                        \"completed\": 0,\n                        \"image_url\": \"https://picsum.photos/seed/task2/400/300\",\n                        \"created_at\": \"2025-09-21T16:39:43.000000Z\",\n                        \"updated_at\": \"2025-09-21T16:39:43.000000Z\"\n                    }\n                ]\n            },\n            {\n                \"id\": 2,\n                \"name\": \"vitae\",\n                \"color\": \"#efbd59\",\n                \"created_at\": \"2025-09-21T16:34:52.000000Z\",\n                \"updated_at\": \"2025-09-21T16:34:52.000000Z\",\n                \"task\": [\n                    {\n                        \"id\": 1,\n                        \"title\": \"laravel2\",\n                        \"description\": \"powerfull framework in back-end  field\",\n                        \"category_id\": 2,\n                        \"priority\": \"high\",\n                        \"completed\": 0,\n                        \"image_url\": \"https://picsum.photos/seed/task1/400/300\",\n                        \"created_at\": \"2025-09-21T16:36:43.000000Z\",\n                        \"updated_at\": \"2025-09-21T16:36:43.000000Z\"\n                    }\n                ]\n            },\n            {\n                \"id\": 3,\n                \"name\": \"aliquam\",\n                \"color\": \"#1a6d05\",\n                \"created_at\": \"2025-09-21T16:34:52.000000Z\",\n                \"updated_at\": \"2025-09-21T16:34:52.000000Z\",\n                \"task\": []\n            },\n            {\n                \"id\": 4,\n                \"name\": \"totam\",\n                \"color\": \"#a1a40b\",\n                \"created_at\": \"2025-09-21T16:34:52.000000Z\",\n                \"updated_at\": \"2025-09-21T16:34:52.000000Z\",\n                \"task\": []\n            },\n            {\n                \"id\": 5,\n                \"name\": \"esse\",\n                \"color\": \"#eac087\",\n                \"created_at\": \"2025-09-21T16:34:52.000000Z\",\n                \"updated_at\": \"2025-09-21T16:34:52.000000Z\",\n                \"task\": []\n            },\n            {\n                \"id\": 6,\n                \"name\": \"aut\",\n                \"color\": \"#623c30\",\n                \"created_at\": \"2025-09-21T16:34:52.000000Z\",\n                \"updated_at\": \"2025-09-21T16:34:52.000000Z\",\n                \"task\": []\n            },\n            {\n                \"id\": 7,\n                \"name\": \"omnis\",\n                \"color\": \"#7baf69\",\n                \"created_at\": \"2025-09-21T16:34:52.000000Z\",\n                \"updated_at\": \"2025-09-21T16:34:52.000000Z\",\n                \"task\": []\n            },\n            {\n                \"id\": 8,\n                \"name\": \"magni\",\n                \"color\": \"#cec65e\",\n                \"created_at\": \"2025-09-21T16:34:52.000000Z\",\n                \"updated_at\": \"2025-09-21T16:34:52.000000Z\",\n                \"task\": []\n            },\n            {\n                \"id\": 9,\n                \"name\": \"dolorum\",\n                \"color\": \"#8677ed\",\n                \"created_at\": \"2025-09-21T16:34:52.000000Z\",\n                \"updated_at\": \"2025-09-21T16:34:52.000000Z\",\n                \"task\": []\n            },\n            {\n                \"id\": 10,\n                \"name\": \"perspiciatis\",\n                \"color\": \"#0dd738\",\n                \"created_at\": \"2025-09-21T16:34:52.000000Z\",\n                \"updated_at\": \"2025-09-21T16:34:52.000000Z\",\n                \"task\": []\n            },\n            {\n                \"id\": 11,\n                \"name\": \"aliquam\",\n                \"color\": \"#9b5038\",\n                \"created_at\": \"2025-09-21T16:34:52.000000Z\",\n                \"updated_at\": \"2025-09-21T16:34:52.000000Z\",\n                \"task\": []\n            },\n            {\n                \"id\": 12,\n                \"name\": \"voluptatum\",\n                \"color\": \"#012411\",\n                \"created_at\": \"2025-09-21T16:34:52.000000Z\",\n                \"updated_at\": \"2025-09-21T16:34:52.000000Z\",\n                \"task\": []\n            },\n            {\n                \"id\": 13,\n                \"name\": \"placeat\",\n                \"color\": \"#b8f2a7\",\n                \"created_at\": \"2025-09-21T16:34:52.000000Z\",\n                \"updated_at\": \"2025-09-21T16:34:52.000000Z\",\n                \"task\": []\n            },\n            {\n                \"id\": 14,\n                \"name\": \"a\",\n                \"color\": \"#9c0c6a\",\n                \"created_at\": \"2025-09-21T16:34:52.000000Z\",\n                \"updated_at\": \"2025-09-21T16:34:52.000000Z\",\n                \"task\": []\n            },\n            {\n                \"id\": 15,\n                \"name\": \"tenetur\",\n                \"color\": \"#00b337\",\n                \"created_at\": \"2025-09-21T16:34:52.000000Z\",\n                \"updated_at\": \"2025-09-21T16:34:52.000000Z\",\n                \"task\": []\n            },\n            {\n                \"id\": 16,\n                \"name\": \"aliquid\",\n                \"color\": \"#131aa9\",\n                \"created_at\": \"2025-09-21T16:34:52.000000Z\",\n                \"updated_at\": \"2025-09-21T16:34:52.000000Z\",\n                \"task\": []\n            },\n            {\n                \"id\": 17,\n                \"name\": \"qui\",\n                \"color\": \"#343450\",\n                \"created_at\": \"2025-09-21T16:34:52.000000Z\",\n                \"updated_at\": \"2025-09-21T16:34:52.000000Z\",\n                \"task\": []\n            },\n            {\n                \"id\": 18,\n                \"name\": \"accusamus\",\n                \"color\": \"#3d1386\",\n                \"created_at\": \"2025-09-21T16:34:52.000000Z\",\n                \"updated_at\": \"2025-09-21T16:34:52.000000Z\",\n                \"task\": []\n            },\n            {\n                \"id\": 19,\n                \"name\": \"deleniti\",\n                \"color\": \"#a46c92\",\n                \"created_at\": \"2025-09-21T16:34:52.000000Z\",\n                \"updated_at\": \"2025-09-21T16:34:52.000000Z\",\n                \"task\": []\n            },\n            {\n                \"id\": 20,\n                \"name\": \"praesentium\",\n                \"color\": \"#8b3391\",\n                \"created_at\": \"2025-09-21T16:34:52.000000Z\",\n                \"updated_at\": \"2025-09-21T16:34:52.000000Z\",\n                \"task\": []\n            }\n        ],\n        \"first_page_url\": \"http://127.0.0.1:8000/api/categories?page=1\",\n        \"from\": 1,\n        \"last_page\": 3,\n        \"last_page_url\": \"http://127.0.0.1:8000/api/categories?page=3\",\n        \"links\": [\n            {\n                \"url\": null,\n                \"label\": \"&laquo; Previous\",\n                \"page\": null,\n                \"active\": false\n            },\n            {\n                \"url\": \"http://127.0.0.1:8000/api/categories?page=1\",\n                \"label\": \"1\",\n                \"page\": 1,\n                \"active\": true\n            },\n            {\n                \"url\": \"http://127.0.0.1:8000/api/categories?page=2\",\n                \"label\": \"2\",\n                \"page\": 2,\n                \"active\": false\n            },\n            {\n                \"url\": \"http://127.0.0.1:8000/api/categories?page=3\",\n                \"label\": \"3\",\n                \"page\": 3,\n                \"active\": false\n            },\n            {\n                \"url\": \"http://127.0.0.1:8000/api/categories?page=2\",\n                \"label\": \"Next &raquo;\",\n                \"page\": 2,\n                \"active\": false\n            }\n        ],\n        \"next_page_url\": \"http://127.0.0.1:8000/api/categories?page=2\",\n        \"path\": \"http://127.0.0.1:8000/api/categories\",\n        \"per_page\": 20,\n        \"prev_page_url\": null,\n        \"to\": 20,\n        \"total\": 50\n    },\n    \"message\": \"retrieved success\"\n}"
+						}
+					]
+				}
+			]
+		}
+	]
+}
