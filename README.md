@@ -54,13 +54,17 @@ Supports categories, priorities, and completed status toggling.
 
   completed_at (timestamp, nullable)
 
-  timestamps
-📌 Example API Calls
-Tasks
+   timestamps
+  
+  
+  
+  
+  
+  📌 Example API Calls 
 
 
-POST /api/tasks
-PATCH /api/task{id}/toggle
+    POST /api/tasks
+    PATCH /api/task{id}/toggle
 
 
 {
