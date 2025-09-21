@@ -15,4 +15,3 @@ Route::post('tasks',[TaskController::class,'create']);
 Route::patch('task/{id}/toggle',[TaskController::class,'toggle']);
 Route::get('categories',[TaskController::class,'category']);
 
-
