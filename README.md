@@ -55,8 +55,50 @@ Supports categories, priorities, and completed status toggling.
   completed_at (timestamp, nullable)
 
   timestamps
+📌 Example API Calls
+Tasks
 
 
+POST /api/tasks
+PATCH /api/task{id}/toggle
+
+
+{
+   "success": true,
+    "data": {
+        "title": "laravel2",
+        "description": "powerfull framework in back-end  field",
+        "category_id": "1",
+        "priority": "high",
+        "updated_at": "2025-09-21T16:39:43.000000Z",
+        "created_at": "2025-09-21T16:39:43.000000Z",
+        "id": 2,
+        "image_url": "https://picsum.photos/seed/task2/400/300"
+    },
+    "message": "created success"
+    }
+
+{
+    "success": true,
+    "data": {
+        "id": 1,
+        "title": "laravel2",
+        "description": "powerfull framework in back-end  field",
+        "priority": "high",
+        "completed": true,
+        "image_url": "https://picsum.photos/seed/task1/400/300",
+        "category": {
+            "id": 2,
+            "name": "vitae",
+            "color": "#efbd59"
+        }
+    },
+    "message": " toggled successfully"
+    }
+
+
+
+    
 📌 Import [task-manager.postman_collection.json](./Task-Manager.postman_collection.json) into Postman to test all API endpoints.
 
 
