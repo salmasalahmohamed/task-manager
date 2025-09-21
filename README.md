@@ -63,10 +63,10 @@ Supports categories, priorities, and completed status toggling.
   📌 Example API Calls 
 
 
-    POST /api/tasks
-    PATCH /api/task{id}/toggle
+ POST /api/tasks
+ PATCH /api/task{id}/toggle
 
-
+       
 {
    "success": true,
     "data": {
