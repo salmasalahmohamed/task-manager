@@ -27,8 +27,7 @@ Supports categories, priorities, and completed status toggling.
 
 
 2-Database Schema:
-   ```bash
-
+   
    Categories
 
    id (PK)
@@ -58,5 +57,6 @@ Supports categories, priorities, and completed status toggling.
   timestamps
 
 
+📌 Import [Task-Manager.postman_collection.json](./Task-Manager.postman_collection.json) into Postman to test all API endpoints.
 
 
