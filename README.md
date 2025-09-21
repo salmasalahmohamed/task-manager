@@ -63,8 +63,8 @@ Supports categories, priorities, and completed status toggling.
   📌 Example API Calls 
 
 
- POST /api/tasks
- PATCH /api/task{id}/toggle
+    POST /api/tasks
+    PATCH /api/task{id}/toggle
 
        
 {
@@ -106,4 +106,5 @@ Supports categories, priorities, and completed status toggling.
 📌 Import [task-manager.postman_collection.json](./Task-Manager.postman_collection.json) into Postman to test all API endpoints.
 
 
-📌 API Documentation (Postman): [View the collection] https://.postman.co/workspace/My-Workspace~9d86fe73-a538-418e-8a36-609d554b367b/collection/24028450-86441909-a258-499c-a231-b1f624e1b81e?action=share&creator=24028450&active-environment=24028450-ebdf8dd0-23c8-424d-b511-3b94aede0ffb
+📌 API Documentation (Postman): 
+[View the collection] https://.postman.co/workspace/My-Workspace~9d86fe73-a538-418e-8a36-609d554b367b/collection/24028450-86441909-a258-499c-a231-b1f624e1b81e?action=share&creator=24028450&active-environment=24028450-ebdf8dd0-23c8-424d-b511-3b94aede0ffb
