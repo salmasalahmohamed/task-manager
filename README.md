@@ -9,7 +9,7 @@ Supports categories, priorities, and completed status toggling.
 
 1. Clone the repo:
    ```bash
-   git clone https://github.com/your-username/task-manager.git
+   git clone (https://github.com/salmasalahmohamed/task-manager.git)
    cd task-manager
    composer install
    cp .env.example .env
