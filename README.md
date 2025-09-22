@@ -51,9 +51,9 @@ Supports categories, priorities, and completed status toggling.
   priority (enum: low, medium, high)
 
   completed (boolean)
-
-  completed_at (timestamp, nullable)
-
+  
+  image_url
+  
    timestamps
   
   
